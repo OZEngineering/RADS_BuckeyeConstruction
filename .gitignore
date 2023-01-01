@@ -1,0 +1,17 @@
+*.dll
+*.pdb
+*.lock
+*.cache
+*.targets
+*.props
+*.exe
+
+*.ide
+*.CopyComplete
+*.1
+*.v2
+*.vsidx
+*.deploy
+*.pdb
+*.manifest
+*.v2

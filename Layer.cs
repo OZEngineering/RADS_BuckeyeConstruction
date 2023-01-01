@@ -22,8 +22,6 @@ namespace EventImportTask
             // We need to have converters access method set to 'public' instead of internal, and to call DeserializeObject
             // with converter method ( SegmentItem.Converter.Settings )
 
-
-
             DateTime now = DateTime.Now;
             try
             {
@@ -56,7 +54,7 @@ namespace EventImportTask
                     //xmlStr = FillInWhenAddedDate(xmlStr, createTime);
 
                     // Fill in the Route
-                    string route = feature.attribute.Street;
+                    string route = feature.attribute.Location;
                     if (route == null) continue;
                     route = ConvertXmlCodes(route);
                     xmlStr = xmlStr.Replace("ROUTE", route);
@@ -141,7 +139,7 @@ namespace EventImportTask
 					//xmlStr = FillInWhenAddedDate(xmlStr, createTime);
 
 					// Fill in the Route
-					string route = feature.Attributes.Street;
+					string route = feature.Attributes.Location;
 					if (route == null) continue;
                     route = ConvertXmlCodes (route);
 					xmlStr = xmlStr.Replace("ROUTE", route);

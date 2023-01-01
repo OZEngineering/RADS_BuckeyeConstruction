@@ -211,6 +211,8 @@
                         return PointContactemail.The6232588057;
                     case "rlinton@buckeyeaz.gov":
                         return PointContactemail.RlintonBuckeyeazGov;
+                    default:
+                        return PointContactemail.RlintonBuckeyeazGov;
                 }
                 throw new Exception("Cannot unmarshal type Contactemail");
             }
@@ -229,6 +231,9 @@
                         serializer.Serialize(writer, "623-258-8057");
                         return;
                     case PointContactemail.RlintonBuckeyeazGov:
+                        serializer.Serialize(writer, "rlinton@buckeyeaz.gov");
+                        return;
+                    default:
                         serializer.Serialize(writer, "rlinton@buckeyeaz.gov");
                         return;
                 }
@@ -254,6 +259,8 @@
                         return PointContact.Contact6232588057;
                     case "Robert Linton":
                         return PointContact.RobertLinton;
+                    default:
+                        return PointContact.RobertLinton;
                 }
                 throw new Exception("Cannot unmarshal type Contact");
             }
@@ -275,6 +282,9 @@
                         serializer.Serialize(writer, "623-258-8057");
                         return;
                     case PointContact.RobertLinton:
+                        serializer.Serialize(writer, "Robert Linton");
+                        return;
+                    default:
                         serializer.Serialize(writer, "Robert Linton");
                         return;
                 }
@@ -300,6 +310,8 @@
                         return PointLanes.LanesPartiallyBlocked;
                     case "WARNING":
                         return PointLanes.Warning;
+                    default:
+                        return PointLanes.LanesPartiallyBlocked;
                 }
                 throw new Exception("Cannot unmarshal type Lanes");
             }
@@ -322,6 +334,9 @@
                         return;
                     case PointLanes.Warning:
                         serializer.Serialize(writer, "WARNING");
+                        return;
+                    default:
+                        serializer.Serialize(writer, "LANES PARTIALLY BLOCKED");
                         return;
                 }
                 throw new Exception("Cannot marshal type Lanes");
@@ -346,6 +361,8 @@
                         return PointReason.SpecialEvent;
                     case "WARNING":
                         return PointReason.Warning;
+                    default:
+                        return PointReason.Construction;
                 }
                 throw new Exception("Cannot unmarshal type Reason");
             }
@@ -369,6 +386,9 @@
                     case PointReason.Warning:
                         serializer.Serialize(writer, "WARNING");
                         return;
+                    default:
+                        serializer.Serialize(writer, "CONSTRUCTION");
+                        return;
                 }
                 throw new Exception("Cannot marshal type Reason");
             }
@@ -390,6 +410,8 @@
                         return PointStatus.Active;
                     case "INACTIVE":
                         return PointStatus.Inactive;
+                    default:
+                        return PointStatus.Active;
                 }
                 throw new Exception("Cannot unmarshal type Status");
             }
@@ -410,6 +432,9 @@
                     case PointStatus.Inactive:
                         serializer.Serialize(writer, "INACTIVE");
                         return;
+                    default:
+                        serializer.Serialize(writer, "ACTIVE");
+                        return;
                 }
                 throw new Exception("Cannot marshal type Status");
             }
@@ -429,9 +454,13 @@
                 {
                     return PointSqlType.SqlTypeOther;
                 }
-                if (value == "sqlTypeDouble")
+                else if (value == "sqlTypeDouble")
                 {
                     return PointSqlType.sqlTypeDouble;
+                }
+                else
+                {
+                    return PointSqlType.SqlTypeOther;
                 }
                 throw new Exception("Cannot unmarshal type SqlType");
             }
@@ -454,117 +483,18 @@
                     serializer.Serialize(writer, "sqlTypeDouble");
                     return;
                 }
+                else
+                {
+                    serializer.Serialize(writer, "sqlTypeOther");
+                    return;
+                }
                 throw new Exception("Cannot marshal type SqlType");
             }
 
             public static readonly PointSqlTypeConverter Singleton = new PointSqlTypeConverter();
         }
 
-/*
-        public class PointItem
-        {
-            public class FieldAliases
-            {
-                public string OBJECTID { get; set; }
-                public string InspectorName { get; set; }
-                public string InspectorPhoneNumber { get; set; }
-                public string StartDate { get; set; }
-                public string EndDate { get; set; }
-                public string EventType { get; set; }
-                public string FullClosure { get; set; }
-                public string Active { get; set; }
-                public string Location { get; set; }
-                public string RestrictionBoundaries { get; set; }
-                public string RestrictionDetails { get; set; }
-                public string Direction { get; set; }
-                public string AlternateRoute { get; set; }
-                public string ProjectName { get; set; }
-                public string AssociatedPermit { get; set; }
-                public string BarricadeCompany { get; set; }
-                public string BarricadePhoneNumber { get; set; }
-                public string Barricade24HourContact { get; set; }
-                public string Contractor { get; set; }
-                public string ContractorPhoneNumber { get; set; }
-                public string Contractor24HourContact { get; set; }
-                public string DescriptionOfWork { get; set; }
-                public string OfficerRequiredAtIntersection { get; set; }
-                public string EmergencyAccessMaintained { get; set; }
-                public string PostToAZ511 { get; set; }
-                public string GlobalID { get; set; }
-                public string DateToPost { get; set; }
-                public string DateToClose { get; set; }
-            }
 
-            public class SpatialReference
-            {
-                public int wkid { get; set; }
-                public int latestWkid { get; set; }
-            }
-
-            public class Field
-            {
-                public string name { get; set; }
-                public string type { get; set; }
-                public string alias { get; set; }
-                public int? length { get; set; }
-            }
-
-            public class Attributes
-            {
-                public int OBJECTID { get; set; }
-                public string InspectorName { get; set; }
-                public string InspectorPhoneNumber { get; set; }
-                public object StartDate { get; set; }
-                public object EndDate { get; set; }
-                public string EventType { get; set; }
-                public string FullClosure { get; set; }
-                public string Active { get; set; }
-                public string Location { get; set; }
-                public string RestrictionBoundaries { get; set; }
-                public string RestrictionDetails { get; set; }
-                public string Direction { get; set; }
-                public object AlternateRoute { get; set; }
-                public string ProjectName { get; set; }
-                public string AssociatedPermit { get; set; }
-                public string BarricadeCompany { get; set; }
-                public object BarricadePhoneNumber { get; set; }
-                public object Barricade24HourContact { get; set; }
-                public string Contractor { get; set; }
-                public object ContractorPhoneNumber { get; set; }
-                public object Contractor24HourContact { get; set; }
-                public string DescriptionOfWork { get; set; }
-                public string OfficerRequiredAtIntersection { get; set; }
-                public string EmergencyAccessMaintained { get; set; }
-                public string PostToAZ511 { get; set; }
-                public string GlobalID { get; set; }
-                public object DateToPost { get; set; }
-                public object DateToClose { get; set; }
-                public long? created_date { get; set; }
-            }
-
-            public class Geometry
-            {
-                public double x { get; set; }
-                public double y { get; set; }
-            }
-
-            public class Feature
-            {
-                public Attributes attributes { get; set; }
-                public Geometry geometry { get; set; }
-            }
-
-            public class PointObject
-            {
-                public string displayFieldName { get; set; }
-                public FieldAliases fieldAliases { get; set; }
-                public string geometryType { get; set; }
-                public SpatialReference spatialReference { get; set; }
-                public List<Field> fields { get; set; }
-                public List<Feature> features { get; set; }
-            }
-        }
-*/
     }
 
 }

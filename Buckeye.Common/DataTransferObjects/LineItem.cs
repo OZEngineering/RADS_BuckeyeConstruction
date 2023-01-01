@@ -224,6 +224,10 @@
                 {
                     return Contactemail.RlintonBuckeyeazGov;
                 }
+                else
+                {
+                    return Contactemail.RlintonBuckeyeazGov;
+                }
                 throw new Exception("Cannot unmarshal type Contactemail");
             }
 
@@ -236,6 +240,11 @@
                 }
                 var value = (Contactemail)untypedValue;
                 if (value == Contactemail.RlintonBuckeyeazGov)
+                {
+                    serializer.Serialize(writer, "rlinton@buckeyeaz.gov");
+                    return;
+                }
+                else
                 {
                     serializer.Serialize(writer, "rlinton@buckeyeaz.gov");
                     return;
@@ -258,6 +267,10 @@
                 {
                     return Contactname.RobertLinton;
                 }
+                else
+                {
+                   return Contactname.RobertLinton;
+                }
                 throw new Exception("Cannot unmarshal type Contactname");
             }
 
@@ -270,6 +283,11 @@
                 }
                 var value = (Contactname)untypedValue;
                 if (value == Contactname.RobertLinton)
+                {
+                    serializer.Serialize(writer, "Robert Linton");
+                    return;
+                }
+                else
                 {
                     serializer.Serialize(writer, "Robert Linton");
                     return;
@@ -294,6 +312,8 @@
                         return Contactphone.The6232588057;
                     case "623-258-8057":
                         return Contactphone.Contactphone6232588057;
+                    default:  
+                        return Contactphone.Contactphone6232588057;
                 }
                 throw new Exception("Cannot unmarshal type Contactphone");
             }
@@ -312,6 +332,9 @@
                         serializer.Serialize(writer, "(623) 258-8057");
                         return;
                     case Contactphone.Contactphone6232588057:
+                        serializer.Serialize(writer, "623-258-8057");
+                        return;
+                    default:
                         serializer.Serialize(writer, "623-258-8057");
                         return;
                 }
@@ -337,6 +360,8 @@
                         return Lanes.LanesPartiallyBlocked;
                     case "WARNING":
                         return Lanes.Warning;
+                    default:
+                        return Lanes.AllLanesClosed;
                 }
                 throw new Exception("Cannot unmarshal type Lanes");
             }
@@ -359,6 +384,9 @@
                         return;
                     case Lanes.Warning:
                         serializer.Serialize(writer, "WARNING");
+                        return;
+                    default:
+                        serializer.Serialize(writer, "ALL LANES CLOSED");
                         return;
                 }
                 throw new Exception("Cannot marshal type Lanes");
@@ -383,6 +411,8 @@
                         return Reason.SpecialEvent;
                     case "WARNING":
                         return Reason.Warning;
+                    default:
+                        return Reason.Construction;
                 }
                 throw new Exception("Cannot unmarshal type Reason");
             }
@@ -406,6 +436,9 @@
                     case Reason.Warning:
                         serializer.Serialize(writer, "WARNING");
                         return;
+                    default:
+                        serializer.Serialize(writer, "CONSTRUCTION");
+                        return;
                 }
                 throw new Exception("Cannot marshal type Reason");
             }
@@ -427,6 +460,8 @@
                         return Status.Active;
                     case "INACTIVE":
                         return Status.Inactive;
+                    default:
+                        return Status.Active;
                 }
                 throw new Exception("Cannot unmarshal type Status");
             }
@@ -446,6 +481,9 @@
                         return;
                     case Status.Inactive:
                         serializer.Serialize(writer, "INACTIVE");
+                        return;
+                    default:
+                        serializer.Serialize(writer, "ACTIVE");
                         return;
                 }
                 throw new Exception("Cannot marshal type Status");
@@ -468,6 +506,8 @@
                         return SqlType.SqlTypeDouble;
                     case "sqlTypeOther":
                         return SqlType.SqlTypeOther;
+                    default:
+                        return SqlType.SqlTypeDouble;
                 }
                 throw new Exception("Cannot unmarshal type SqlType");
             }
@@ -487,6 +527,9 @@
                         return;
                     case SqlType.SqlTypeOther:
                         serializer.Serialize(writer, "sqlTypeOther");
+                        return;
+                    default:
+                        serializer.Serialize(writer, "sqlTypeDouble");
                         return;
                 }
                 throw new Exception("Cannot marshal type SqlType");
